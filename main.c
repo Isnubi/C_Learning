@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../Headers/function.h"
-#include "../Headers/UnitConvert.h"
+#include "Headers/function.h"
+#include "Headers/UnitConvert.h"
 
 int main(int argc, char *argv[])
 {
