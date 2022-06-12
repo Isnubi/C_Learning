@@ -1,0 +1,2 @@
+void addContact();
+void showContacts();

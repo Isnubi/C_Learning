@@ -3,24 +3,27 @@
 #include <unistd.h>
 #include "Headers/function.h"
 #include "Headers/UnitConvert.h"
+#include "Headers/Contact.h"
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
+    system("color B");
+
     printf("Choose your script:\n");
     printf("1. Hours_converter\n");
     printf("2. Integer_to_string\n");
     printf("3. BMI_calculator\n");
     printf("4. UnitConvert\n");
-    printf("5. Exit\n");
+    printf("5. Contact manager\n");
+    printf("0. Exit\n");
     int script;
     scanf("%d", &script);
-    if(script == 1){
+    if (script == 1) {
         int hours = 0, minutes = 564;
         // Send variables addresses to functions
         getHours(&hours, &minutes);
         printf("%d hours et %d minutes\n", hours, minutes);
     }
-    else if(script == 2){
+    else if (script == 2) {
         int number = 123;
         char *string = NULL;
         // Return the address of string to the function convertIntToString and store the result in string
@@ -28,7 +31,7 @@ int main(int argc, char *argv[])
         printf("%s\n", string);
         free(string);
     }
-    else if(script == 3) {
+    else if (script == 3) {
         int height, weight;
         float BMI;
         printf("Enter your height in cm: ");
@@ -45,7 +48,7 @@ int main(int argc, char *argv[])
             fclose(file);
         }
     }
-    else if(script == 4) {
+    else if (script == 4) {
         printf("Choose your category of convertion:\n");
         printf("1. Temperature\n");
         printf("2. Length\n");
@@ -53,7 +56,7 @@ int main(int argc, char *argv[])
         printf("4. Exit\n");
         int category;
         scanf("%d", &category);
-        if(category == 1) {
+        if (category == 1) {
             printf("Choose your convertion:\n");
             printf("1. Celsius to Fahrenheit\n");
             printf("2. Fahrenheit to Celsius\n");
@@ -77,8 +80,7 @@ int main(int argc, char *argv[])
             } else {
                 printf("Wrong input\n");
             }
-        }
-        else if(category == 2) {
+        } else if (category == 2) {
             printf("Choose your convertion:\n");
             printf("1. Meters to kilometers\n");
             printf("2. Kilometers to meters\n");
@@ -102,8 +104,7 @@ int main(int argc, char *argv[])
             } else {
                 printf("Wrong input\n");
             }
-        }
-        else if(category == 3) {
+        } else if (category == 3) {
             printf("Choose your convertion:\n");
             printf("1. Kilograms to pounds\n");
             printf("2. Pounds to kilograms\n");
@@ -127,15 +128,40 @@ int main(int argc, char *argv[])
             } else {
                 printf("Wrong input\n");
             }
-        }
-        else if(category == 4) {
+        } else if (category == 4) {
             printf("Exit\n");
-        }
-        else {
+        } else {
             printf("Wrong input\n");
         }
     }
-    else if(script == 5) {
+    else if (script == 5) {
+        printf("Enter your password: ");
+        char password[100];
+        scanf("%s", password);
+        if (strcmp(password, "123") == 0) {
+            system("cls");
+            printf("Welcome\n");
+            printf("1. Add contact\n");
+            printf("2. Show contacts\n");
+            printf("3. Exit\n");
+            int category;
+            scanf("%d", &category);
+            if (category == 1) {
+                addContact();
+                system("cls");
+            } else if (category == 2) {
+                showContacts();
+                system("cls");
+            } else if (category == 3) {
+                printf("Exit\n");
+            } else {
+                printf("Wrong input\n");
+            }
+        } else {
+            printf("Wrong password\n");
+        }
+    }
+    else if (script == 0) {
         printf("Exit\n");
     }
     else {
