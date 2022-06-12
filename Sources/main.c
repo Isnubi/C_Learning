@@ -4,15 +4,15 @@
 
 int main(int argc, char *argv[])
 {
-    int heures = 0, minutes = 564;
-    // On envoie l'adresse de heures et minutes à la fonction decoupeMinutes
-    decoupeMinutes(&heures, &minutes);
-    printf("%d heures et %d minutes\n", heures, minutes);
+    int hours = 0, minutes = 564;
+    // Send variables addresses to functions
+    getHours(&hours, &minutes);
+    printf("%d hours et %d minutes\n", hours, minutes);
 
 
     int number = 123;
     char *string = NULL;
-    // On envoie l'adresse de number et string à la fonction convertIntToString
+    // Return the address of string to the function convertIntToString and store the result in string
     convertIntToString(&number, &string);
     printf("%s\n", string);
     free(string);

@@ -1,8 +1,8 @@
 #include <math.h>
 
-void decoupeMinutes(int *P_heures, int *P_minutes)
+void getHours(int *P_hours, int *P_minutes)
 {
-    *P_heures = *P_minutes / 60;  // 90 / 60 = 1
+    *P_hours = *P_minutes / 60;  // 90 / 60 = 1
     *P_minutes = *P_minutes % 60; // 90 % 60 = 30
 }
 
