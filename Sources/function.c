@@ -12,3 +12,8 @@ void convertIntToString(int *number, char **string)
     *string = malloc(sizeof(char) * (int)log10(*number) + 1);
     sprintf(*string, "%d", *number);
 }
+
+void BMI_calculator(int *height, int *weight, float *BMI)
+{
+    *BMI = (float)*weight / (pow(*height, 2) / 10000);
+}
