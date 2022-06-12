@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include "Headers/function.h"
 #include "Headers/UnitConvert.h"
 
@@ -134,5 +135,14 @@ int main(int argc, char *argv[])
             printf("Wrong input\n");
         }
     }
+    else if(script == 5) {
+        printf("Exit\n");
+    }
+    else {
+        printf("Wrong input\n");
+    }
+
+    system("pause");
+
     return 0;
 }
