@@ -15,7 +15,6 @@ After extracting the archive, you have to add, in your CMakeLists.txt file, the 
 With the others "SET" lines.
 ```
 set(FULL_PATH_TO_MYSQL_CONNECTOR_C_DIR "Your path to the MySQL Connector C extracted folder")
-
 ```
 
 After the "ADD_EXECUTABLE" line, you have to add the following lines:
