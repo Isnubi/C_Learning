@@ -2,6 +2,8 @@
 
 This repository contains the source code for the C_Learning project.
 
+I'm learning C using **Windows x64 platform** and **CLion IDE**.
+
 This project allow to follow my learning progress in C language.
 
 ## Dependencies
@@ -15,6 +17,7 @@ After extracting the archive, you have to add, in your CMakeLists.txt file, the 
 With the others "SET" lines.
 ```
 set(FULL_PATH_TO_MYSQL_CONNECTOR_C_DIR "Your path to the MySQL Connector C extracted folder")
+
 ```
 
 After the "ADD_EXECUTABLE" line, you have to add the following lines:
