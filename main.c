@@ -4,6 +4,7 @@
 #include "Headers/function.h"
 #include "Headers/UnitConvert.h"
 #include "Headers/Contact.h"
+#include <mysql.h>
 
 int main(int argc, char *argv[]) {
     system("color B");
@@ -14,6 +15,7 @@ int main(int argc, char *argv[]) {
     printf("3. BMI_calculator\n");
     printf("4. UnitConvert\n");
     printf("5. Contact manager\n");
+    printf("6. DB manager\n");
     printf("0. Exit\n");
     int script;
     scanf("%d", &script);
@@ -80,7 +82,8 @@ int main(int argc, char *argv[]) {
             } else {
                 printf("Wrong input\n");
             }
-        } else if (category == 2) {
+        }
+        else if (category == 2) {
             printf("Choose your convertion:\n");
             printf("1. Meters to kilometers\n");
             printf("2. Kilometers to meters\n");
@@ -104,7 +107,8 @@ int main(int argc, char *argv[]) {
             } else {
                 printf("Wrong input\n");
             }
-        } else if (category == 3) {
+        }
+        else if (category == 3) {
             printf("Choose your convertion:\n");
             printf("1. Kilograms to pounds\n");
             printf("2. Pounds to kilograms\n");
@@ -128,9 +132,11 @@ int main(int argc, char *argv[]) {
             } else {
                 printf("Wrong input\n");
             }
-        } else if (category == 4) {
+        }
+        else if (category == 4) {
             printf("Exit\n");
-        } else {
+        }
+        else {
             printf("Wrong input\n");
         }
     }
@@ -160,6 +166,63 @@ int main(int argc, char *argv[]) {
         } else {
             printf("Wrong password\n");
         }
+    }
+    else if (script == 6) {
+        system("cls");
+        //connection to database
+        char *host = "localhost";
+        char *user = "root";
+        char *password = "";
+        char *database = "c_learning";
+        int port = 3306;
+        MYSQL *conn;
+        conn = mysql_init(NULL);
+        if (conn == NULL) {
+            printf("Error init\n");
+            system("pause");
+            exit(1);
+        }
+        if (mysql_real_connect(conn, host, user, password, database, port, NULL, 0) == NULL) {
+            printf("Error connect\n");
+            system("pause");
+            exit(1);
+        }
+        printf("Connected\n");
+        //end of connection to database
+
+        //char query[1000] = "select * from users";
+        char query[1000];
+        printf("Enter your query: ");
+        fflush(stdin);
+        fgets(query, 1000, stdin);
+        printf("%s\n", query);
+        if (mysql_query(conn, query)) {
+            printf("Error query\n");
+            system("pause");
+            exit(1);
+        }
+        printf("Query executed\n");
+        //end of query
+
+        //print result of query only if it is select
+        if (strncmp(query, "select", 6) == 0) {
+            MYSQL_RES *res;
+            MYSQL_ROW row;
+            res = mysql_store_result(conn);
+            int num_fields = mysql_num_fields(res);
+            int num_rows = mysql_num_rows(res);
+            printf("Number of rows: %d\n", num_rows);
+            printf("Number of fields: %d\n", num_fields);
+            while ((row = mysql_fetch_row(res))) {
+                for (int i = 0; i < num_fields; i++) {
+                    printf("%s\t", row[i]);
+                }
+                printf("\n");
+            }
+            mysql_free_result(res);
+        }
+        //end of result
+        mysql_close(conn);
     }
     else if (script == 0) {
         printf("Exit\n");
