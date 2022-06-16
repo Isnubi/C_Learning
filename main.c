@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
+#include <string.h>
+#include <conio.h>
 #include "Headers/function.h"
 #include "Headers/UnitConvert.h"
 #include "Headers/Contact.h"
+#include "Headers/calendar.h"
 #include <mysql.h>
 
 int main(int argc, char *argv[]) {
@@ -16,6 +18,7 @@ int main(int argc, char *argv[]) {
     printf("4. UnitConvert\n");
     printf("5. Contact manager\n");
     printf("6. DB manager\n");
+    printf("7. Calendar\n");
     printf("0. Exit\n");
     int script;
     scanf("%d", &script);
@@ -223,6 +226,9 @@ int main(int argc, char *argv[]) {
         }
         //end of result
         mysql_close(conn);
+    }
+    else if (script == 7) {
+        calend();
     }
     else if (script == 0) {
         printf("Exit\n");

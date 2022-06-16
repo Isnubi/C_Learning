@@ -1,4 +1,6 @@
 #include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 void getHours(int *P_hours, int *P_minutes)
 {
