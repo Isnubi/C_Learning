@@ -37,6 +37,7 @@ You can find differents functions, such as:
 * **UnitConverter**: convert a number of unit to another unit
 * **ContactManager**: manage a list of contacts
 * **DBManager**: manage a database
+* **Calendar**: view a calendar
 
 ## Possible errors
 
