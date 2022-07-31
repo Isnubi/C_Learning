@@ -8,6 +8,15 @@
 #include "Headers/calendar.h"
 #include <mysql.h>
 
+
+void GOTOXY(int x, int y) {
+    COORD coord;
+    coord.X = x;
+    coord.Y = y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+}
+
+
 int main(int argc, char *argv[]) {
     system("color B");
 
@@ -16,9 +25,10 @@ int main(int argc, char *argv[]) {
     printf("2. Integer_to_string\n");
     printf("3. BMI_calculator\n");
     printf("4. UnitConvert\n");
-    printf("5. Contact manager\n");
+    printf("5. Contact manager - CSV usage\n");
     printf("6. DB manager\n");
-    printf("7. Calendar\n");
+    printf("7. Calendar - not by me\n");
+    printf("8. GOTOXY test\n");
     printf("0. Exit\n");
     int script;
     scanf("%d", &script);
@@ -173,11 +183,11 @@ int main(int argc, char *argv[]) {
     else if (script == 6) {
         system("cls");
         //connection to database
-        char *host = "localhost";
-        char *user = "root";
-        char *password = "";
-        char *database = "c_learning";
-        int port = 3306;
+        char *host = "host";
+        char *user = "username";
+        char *password = "passwd";
+        char *database = "database";
+        int port = port;
         MYSQL *conn;
         conn = mysql_init(NULL);
         if (conn == NULL) {
@@ -229,6 +239,11 @@ int main(int argc, char *argv[]) {
     }
     else if (script == 7) {
         calend();
+    }
+    else if (script == 8) {
+        system("cls");
+        GOTOXY(20, 5);
+        printf("test\n\n");
     }
     else if (script == 0) {
         printf("Exit\n");
