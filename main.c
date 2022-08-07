@@ -182,12 +182,25 @@ int main(int argc, char *argv[]) {
     }
     else if (script == 6) {
         system("cls");
-        //connection to database
-        char *host = "host";
-        char *user = "username";
-        char *password = "passwd";
-        char *database = "database";
-        int port = port;
+
+        char *host = (char *) malloc(17);
+        char *user = (char *) malloc(100);
+        char *password = (char *) malloc(100);
+        char *database = (char *) malloc(100);
+
+        printf("Enter your database connection parameters.\n");
+
+        printf("Host: ");
+        scanf("%s", host);
+        printf("User: ");
+        scanf("%s", user);
+        printf("Password: ");
+        scanf("%s", password);
+        printf("Database: ");
+        scanf("%s", database);
+
+        // connect to database
+        int port = 3306;
         MYSQL *conn;
         conn = mysql_init(NULL);
         if (conn == NULL) {
